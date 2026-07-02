@@ -1,92 +1,53 @@
 <script lang="ts">
 	import { ArrowBigRight } from 'lucide-svelte';
-	import { glitch } from '$lib/glitch'; // Adjust the import path if your setup is different
+	import { glitch } from '$lib/glitch';
+	import TreeLine from './treeLine.svelte'; // Make sure this path matches your file structure
+
+	// 1. Corrected TypeScript Array Type definition
+	let specializations: Array<{ id: string; title: string; content: string }> = [
+		{
+			id: '01',
+			title: 'AI & Intelligent Automation',
+			content: 'LLM agents for DevOps, AIOps, Runbook Automation'
+		},
+		{ id: '02', title: 'Programming Languages', content: 'Go, Python, TypeScript' },
+		{ id: '03', title: 'Kernel', content: 'Linux' },
+		{ id: '04', title: 'Containerization & Orchestration', content: 'Docker, Kubernetes' },
+		{ id: '05', title: 'CI/CD & Workflow Automation', content: 'Actions, Automated Pipelines' },
+		{ id: '06', title: 'Infrastructure as Code', content: 'Terraform' },
+		{ id: '07', title: 'Cloud Providers', content: 'AWS, GCP' }
+	];
 </script>
 
 <div
-	class="relative flex min-h-[90dvh] w-full flex-col items-start justify-start gap-2 leading-relaxed font-medium"
+	class="relative mt-[5dvh] flex w-full flex-col items-start justify-start gap-4 leading-relaxed font-medium"
 >
 	<!-- Terminal Command Title -->
-	<h3 use:glitch={{ mode: 'loop', speed: 40 }} class="text-lg font-bold tracking-wider text-accent">
-		/ get about
+	<h3 class="mb-2 font-bold tracking-wider text-accent">
+		/ ls st<span use:glitch={{ mode: 'loop', speed: 100 }}>ac</span>k
 	</h3>
 
-	<!-- Profile Image -->
-	<img
-		src="./about.png"
-		alt="Austine's profile"
-		class="border-muted aspect-square w-[10vw] self-start rounded-full max-sm:w-20"
-	/>
+	<!-- Skills Section using your Custom Tree brackets -->
+	<div class="flex w-full flex-col gap-3">
+		{#each specializations as spec}
+			<div class="relative flex flex-col pl-6">
+				<div class="absolute top-1 left-0 h-2 w-3 border-t border-l border-foreground"></div>
 
-	<!-- Intro Headers -->
-	<div class="flex flex-col gap-1">
-		<h2 class="font-bold">
-			Hey, I'm <span use:glitch={{ mode: 'hover' }} class="cursor-default text-accent"
-				>Austine.</span
-			>
-		</h2>
-		<p class="">
-			I specialize in <span class="font-semibold text-accent"
-				>Cloud, DevOps, and Site Reliability Engineering.</span
-			>
-		</p>
-	</div>
+				<!-- Bottom hook & spine (└) -->
+				<div class="absolute top-1 left-0 h-10 w-3 border-b border-l border-accent"></div>
 
-	<!-- Skills Section -->
-	<div class="w-full space-y-2">
-		<!--<p use:glitch={{ mode: 'once' }} class="text-sm font-bold tracking-wide text-accent">
-			// Technologies & Paradigms
-		</p>-->
+				<!-- Header Content Row -->
+				<div class="flex h-6 items-center gap-1.5">
+					<h3 class="tracking-wide text-accent italic">{spec.title}</h3>
+				</div>
 
-		<ul class="flex list-[square] flex-col items-start gap-2 pl-6">
-			<li>
-				<span class="font-bold">AI & Intelligent Automation -> </span> LLM agents for DevOps, AIOps, Runbook
-				Automation
-			</li>
-			<li><span class="font-bold">AProgramming Languages -> Go, Python, TypeScript</span></li>
-			<li><span class="font-bold">Kernel -> </span> Linux</li>
-			<li>
-				<span class="font-bold">Containerization & Orchestration -> </span> Docker, Kubernetes
-			</li>
-			<li>
-				<span class="font-bold">CI/CD & Workflow Automation -> </span> Actions, Automated Pipelines
-			</li>
-			<li><span class="font-bold">Infrastructure as Code -></span> Terraform</li>
-			<li><span class="font-bold">Cloud Providers -></span> AWS, GCP</li>
-		</ul>
-	</div>
-
-	<!-- Computer Science Foundation Line -->
-	<!--<p>
-		As a computer science graduate I have strong foundation in <span class="font-semibold"
-			>Data Structures & Algorithms, Operating Systems, Networking Protocols (TCP/IP, DNS, HTTP),</span
-		> and distributed system design.
-	</p>-->
-
-	<!-- Context Paragraph -->
-	<p class="leading-normal">
-		As a computer science graduate. In my free time, I'm nerdy about tech, deep-diving into Linux
-		configurations, and experimenting with AI-driven automation systems
-	</p>
-
-	<!-- Social Connections -->
-	<div class="flex items-center gap-6 pt-2">
-		<a
-			href="https://github.com/austinemk"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="transition-colors hover:text-accent"
-			aria-label="GitHub Profile"
-		>
-			<img src="./github.png" alt="github" class="aspect-square w-6" />
-		</a>
-
-		<a
-			href="mailto:your.email@example.com"
-			class="transition-colors hover:text-accent"
-			aria-label="Email Me"
-		>
-			<img src="./mail.png" alt="mail" class="aspect-square w-6" />
-		</a>
+				<!-- Sub-Content Dropdown -->
+				<p class="mt-2 pl-4 text-sm max-sm:text-xs">
+					<span class="text-accent">```</span><br />
+					{spec.content}
+					<span class="text-accent">```</span>
+				</p>
+			</div>
+		{/each}
 	</div>
 </div>

@@ -3,31 +3,17 @@
 
 @theme {
 	--color-accent: #94e2d5;
-	--color-text: #cad3f5;
-	--color-overlay: #6e738d;
-	--color-base: #24273a;
+	--color-foreground: #cad3f5;
+	--color-overlay: #11111b;
+	--color-background: #1e1e2e;
 }
 
 body {
 	/* 1. Layout */
-	@apply flex h-dvh w-dvw flex-col items-center justify-between gap-0 overflow-x-hidden overflow-y-auto text-sm text-text;
-	font-family: 'Space Mono', monospace;
-
-	background:
-		url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
-		/*radial-gradient(circle at 50% 50%, #1e2030 0%, #11111b 100%)*/ #111111;
-
-	/* This makes the grain subtle and "embedded" into the color */
-	background-blend-mode: overlay;
-	opacity: 0.98;
+	@apply flex h-dvh w-dvw flex-col items-center justify-between gap-0 overflow-x-hidden overflow-y-auto bg-background text-base text-foreground max-sm:text-sm;
+	font-family: 'Chakra Petch', monospace;
 }
 
-.btn {
-	@apply bg-linear-to-b from-text/20 from-70% to-transparent to-70% backdrop-blur-2xl;
-}
-.curved {
-	@apply rounded-full border-2 border-x-text border-y-transparent px-5 py-2;
-}
 @layer components {
 	.square-framed {
 		@apply relative px-8 py-6;

@@ -10,6 +10,15 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
+		id: '002',
+		title: 'Linktui',
+		description:
+			'Manage wifi, bluetooth and vpn all from your terminal. Built with go offers minimalist single binary that takes less ram and almost zero cpu usage',
+		image: 'linktui',
+		date: 'june, 2025',
+		github: 'https://github.com/austinemk/linktui'
+	},
+	{
 		id: '001',
 		title: 'Vitals Widget',
 		description:
@@ -18,23 +27,5 @@ export const projects: Project[] = [
 		date: 'dec, 2025',
 		link: 'https://extensions.gnome.org/extension/9072/vitals-widget/',
 		github: 'https://github.com/austinemk/vitals-widget'
-	},
-	{
-		id: '002',
-		title: 'Linktui',
-		description:
-			'Manage wifi, bluetooth and vpn all from your terminal. Built with go offers minimalist single binary that takes less ram and almost zero cpu usage',
-		image: 'linktui',
-		date: 'dec, 2025',
-		github: 'https://github.com/austinemk/linktui'
-	},
-	{
-		id: '003',
-		title: 'Linktui',
-		description:
-			'Manage wifi, bluetooth and vpn all from your terminal. Built with go offers minimalist single binary that takes less ram and almost zero cpu usage',
-		image: 'linktui',
-		date: 'dec, 2025',
-		github: 'https://github.com/austinemk/linktui'
 	}
 ];

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.ico';
-	import '@fontsource/space-mono';
+	import '@fontsource/chakra-petch';
 	let { children } = $props();
+	export const prerender = true;
 </script>
 
 <svelte:head>

@@ -8,43 +8,43 @@
 </script>
 
 <div class="relative flex w-full flex-col gap-5 pt-14">
-	<h3 class="font-bold text-accent">/ get projects</h3>
+	<h3 class="font-bold text-accent">/ ls projects</h3>
 
 	{#each projects as project}
 		<div
-			class="border-muted relative flex w-full items-center gap-4 overflow-hidden border-b pb-6 last:border-0"
+			class="relative flex w-full items-center gap-4 overflow-hidden border-l-0 border-accent bg-overlay p-3"
 		>
 			{#if !project.showImage}
 				<div
 					in:fly={{ x: -20, duration: 300 }}
-					class="flex w-full items-center justify-between gap-4"
+					class="flex w-full flex-col items-start justify-between gap-4"
 				>
-					<div class="flex flex-1 flex-col gap-4">
-						<h4 class="">
-							/cd <span class="font-bold">{project.title}</span>
-						</h4>
-						<p class="leading-5">
-							{project.description}. <span class="opacity-50">[ {project.date} ]</span>
-						</p>
-						<div class="flex items-center gap-5">
+					<div class="flex w-full items-start justify-between">
+						<h4 class="text-lg font-bold uppercase">/{project.title}</h4>
+						<div class="flex items-center gap-2 self-end text-sm max-sm:text-xs">
 							{#if project.github}
-								<a href={project.github}>
-									<img class="aspect-square w-5" src="./github.png" alt="github" />
-								</a>
+								<a href={project.github} class="text-accent"> github </a>
 							{/if}
+							<span>|</span>
 							{#if project.link}
-								<a href={project.link}><SquareArrowOutUpRight class="aspect-square w-5" /></a>
+								<a href={project.link} class="text-accent">live</a>
 							{/if}
 						</div>
 					</div>
+					<p class="w-9/10 text-sm leading-5 max-sm:text-xs">
+						{project.description}.
+					</p>
 
-					<button
-						on:click={() => (project.showImage = true)}
-						class="flex h-full cursor-pointer items-center justify-center p-2 opacity-50 transition-colors duration-200 hover:text-accent"
-						aria-label="Reveal image"
-					>
-						<ChevronRight class="h-6 w-6" />
-					</button>
+					<div class="flex w-full items-center gap-10">
+						<button
+							on:click={() => (project.showImage = true)}
+							class="flex flex-1 cursor-pointer items-center justify-center p-2 grayscale transition-colors duration-200 hover:grayscale-75"
+							aria-label="Reveal image"
+						>
+							<img src={`./projects/${project.image}.jpg`} alt="shot" class="h-8 w-full" />
+						</button>
+						<p class="text-xs">{project.date}</p>
+					</div>
 				</div>
 			{:else}
 				<div in:fly={{ x: 20, duration: 300 }} class="flex w-full items-center gap-4">
