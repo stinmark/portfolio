@@ -35,7 +35,7 @@
 
 	<div>
 		[ <a href="https://github.com/stinmark" class="text-sm text-accent underline">github</a> |
-		<a href="#" class="text-sm text-accent underline">email</a> ]
+		<a href="mailto:your-email@example.com" class="text-sm text-accent underline">email</a> ]
 	</div>
 	<Projects />
 	<About />
